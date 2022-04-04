@@ -48,7 +48,8 @@ class CheckRole
         if (empty($access[$currentRole])) {
             return $next($request);
         } else {
-            if ((($request_method == 'POST' ||
+            if (
+                (($request_method == 'POST' ||
                     $request_method == 'PATCH' ||
                     $request_method == 'DELETE' ||
                     $request_method == 'PUT') &&

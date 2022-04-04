@@ -40,7 +40,7 @@ class CreateUser extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->greeting('Welcome!')
                     ->line('Lorem ipsum dolor.')
                     ->action('Go to My Account', '/')

@@ -4,7 +4,7 @@ namespace App\Filters;
 
 use App\Models\Entry;
 use App\Models\Journal;
-use \Spatie\QueryBuilder\Sorts\Sort;
+use Spatie\QueryBuilder\Sorts\Sort;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 

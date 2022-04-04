@@ -10,7 +10,6 @@ use App\Services\AddressService;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 
-
 class AddressController extends BaseController
 {
     protected $service;

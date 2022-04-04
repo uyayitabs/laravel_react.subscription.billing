@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 class NoteApiRequest extends BaseApiRequest
 {
     public function rules(): array

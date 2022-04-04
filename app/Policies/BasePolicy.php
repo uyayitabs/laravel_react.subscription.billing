@@ -36,12 +36,13 @@ class BasePolicy
         //Check if user has a relation to tenant
         $permittedTenants = [];
         $tenantUsers = $user->tenantUsers()->get();
-        foreach($tenantUsers as $tu)
-        {
+        foreach ($tenantUsers as $tu) {
             $permittedTenants = array_merge($permittedTenants, $tu->tenant->getChildrenList());
         }
 
-        if(!array_search($tenant->id, $permittedTenants)) return false;
+        if (!array_search($tenant->id, $permittedTenants)) {
+            return false;
+        }
 
         // grab the socketid that was include in the http header
         if (!$socket_id) {

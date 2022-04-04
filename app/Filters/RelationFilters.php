@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class RelationFilters implements Filter
 {
-    public function __invoke(Builder $query, $value, string $property) : Builder
+    public function __invoke(Builder $query, $value, string $property): Builder
     {
         if (is_array($value)) {
             foreach ($value as $keyword) {
@@ -19,19 +19,19 @@ class RelationFilters implements Filter
                     $query->orWhere('email', 'LIKE', '%' . $keyword . '%');
                     $query->orWhere('phone', 'LIKE', '%' . $keyword . '%');
                     $query->orWhere('bank_account', 'LIKE', '%' . $keyword . '%');
-        
+
                     $query->orWhereHas('addresses', function (Builder $query) use ($keyword) {
                         $query->where('street1', 'LIKE', '%' . $keyword . '%');
                         $query->orWhere('house_number', 'LIKE', '%' . $keyword . '%');
                         $query->orWhere('street2', 'LIKE', '%' . $keyword . '%');
                         $query->orWhere('zipcode', 'LIKE', '%' . $keyword . '%');
-        
+
                         $query->orWhereHas('city', function (Builder $query) use ($keyword) {
                             $query->where('name', 'LIKE', '%' . $keyword . '%');
                             $query->orWhere('municipality', 'LIKE', '%' . $keyword . '%');
                         });
                     });
-        
+
                     $query->orWhereHas('persons', function (Builder $query) use ($keyword) {
                         $query->where('email', 'LIKE', '%' . $keyword . '%');
                         $query->orWhere('first_name', 'LIKE', '%' . $keyword . '%');
@@ -48,19 +48,19 @@ class RelationFilters implements Filter
                 $query->orWhere('email', 'LIKE', '%' . $value . '%');
                 // $query->orWhere('phone', 'LIKE', '%' . $value . '%');
                 $query->orWhere('bank_account', 'LIKE', '%' . $value . '%');
-    
+
                 $query->orWhereHas('addresses', function (Builder $query) use ($value) {
                     $query->where('street1', 'LIKE', '%' . $value . '%');
                     $query->orWhere('house_number', 'LIKE', '%' . $value . '%');
                     $query->orWhere('street2', 'LIKE', '%' . $value . '%');
                     $query->orWhere('zipcode', 'LIKE', '%' . $value . '%');
-    
+
                     $query->orWhereHas('city', function (Builder $query) use ($value) {
                         $query->where('name', 'LIKE', '%' . $value . '%');
                         $query->orWhere('municipality', 'LIKE', '%' . $value . '%');
                     });
                 });
-    
+
                 $query->orWhereHas('persons', function (Builder $query) use ($value) {
                     $query->where('email', 'LIKE', '%' . $value . '%');
                     $query->orWhere('first_name', 'LIKE', '%' . $value . '%');

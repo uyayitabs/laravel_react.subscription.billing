@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 class CountryApiRequest extends BaseApiRequest
 {
     public function rules(): array

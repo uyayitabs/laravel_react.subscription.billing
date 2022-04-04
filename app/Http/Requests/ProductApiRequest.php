@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 class ProductApiRequest extends BaseApiRequest
 {
     public function rules(): array

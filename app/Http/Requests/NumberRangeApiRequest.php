@@ -17,7 +17,7 @@ class NumberRangeApiRequest extends BaseApiRequest
                 Rule::in(NumberRange::$constTypes)
             ],
             "description" =>  $this->requiredOrNullable . "|string|min:1|max:190",
-            "start" =>$this->requiredOrNullable . "|integer|min:0|max:2147483647",
+            "start" => $this->requiredOrNullable . "|integer|min:0|max:2147483647",
             "end" => $this->requiredOrNullable . "|integer|min:0|max:2147483647",
             "format" => [
                 $this->requiredOrNullable,

@@ -77,7 +77,7 @@ class RelationResource extends JsonResource
                 ->with('status')
                 ->first();
 
-            if ($salesInvoice->status->id !== 0)
+            if ($salesInvoice->status->id !== 0) {
                 $lastInvoice = [
                     'invoice_no' => $salesInvoice->invoice_no,
                     'date' => dateFormat($salesInvoice->date),
@@ -85,6 +85,7 @@ class RelationResource extends JsonResource
                     'price_vat' => $salesInvoice->price_vat,
                     'price_total' => $salesInvoice->price_total
                 ];
+            }
         }
 
         if ($this->list) {

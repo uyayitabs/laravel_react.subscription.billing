@@ -16,7 +16,7 @@ class BaseApiRequest extends FormRequest
         $this->isPost = request()->isMethod("post");
         if ($this->isPut) {
             $this->requiredOrNullable = 'nullable';
-        } else if ($this->isPost) {
+        } elseif ($this->isPost) {
             $this->requiredOrNullable = 'required';
         }
     }
@@ -27,47 +27,51 @@ class BaseApiRequest extends FormRequest
     }
 
     /**
-	 * Determine if the given offset exists.
-	 *
-	 * @param string $offset
-	 *
-	 * @return bool
-	 */
-	function offsetExists($offset): bool {
-		return parent::offsetExists($offset);
-	}
+     * Determine if the given offset exists.
+     *
+     * @param string $offset
+     *
+     * @return bool
+     */
+    function offsetExists($offset): bool
+    {
+        return parent::offsetExists($offset);
+    }
 
-	/**
-	 * Get the value at the given offset.
-	 *
-	 * @param string $offset
-	 *
-	 * @return mixed
-	 */
-	function offsetGet($offset): mixed {
-		return parent::offsetGet($offset);
-	}
+    /**
+     * Get the value at the given offset.
+     *
+     * @param string $offset
+     *
+     * @return mixed
+     */
+    function offsetGet($offset): mixed
+    {
+        return parent::offsetGet($offset);
+    }
 
-	/**
-	 * Set the value at the given offset.
-	 *
-	 * @param string $offset
-	 * @param mixed $value
-	 *
-	 * @return void
-	 */
-	function offsetSet($offset, $value): void {
-		parent::offsetSet($offset, $value);
-	}
+    /**
+     * Set the value at the given offset.
+     *
+     * @param string $offset
+     * @param mixed $value
+     *
+     * @return void
+     */
+    function offsetSet($offset, $value): void
+    {
+        parent::offsetSet($offset, $value);
+    }
 
-	/**
-	 * Remove the value at the given offset.
-	 *
-	 * @param string $offset
-	 *
-	 * @return void
-	 */
-	function offsetUnset($offset): void {
-		parent::offsetUnset($offset);
-	}
+    /**
+     * Remove the value at the given offset.
+     *
+     * @param string $offset
+     *
+     * @return void
+     */
+    function offsetUnset($offset): void
+    {
+        parent::offsetUnset($offset);
+    }
 }

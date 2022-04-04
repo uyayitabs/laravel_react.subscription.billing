@@ -39,9 +39,9 @@ class RelationApiRequest extends BaseApiRequest
                 $this->requiredOrNullable,
                 'integer',
                 Rule::exists('relation_types', 'id')
-                    ->where (function ($query) use ($relationTypeIdParam){
+                    ->where(function ($query) use ($relationTypeIdParam) {
                         $query->where('id', $relationTypeIdParam);
-                })
+                    })
             ],
             'status' => [$this->requiredOrNullable, 'integer', Rule::in([0, 1])],
             'company_name' => [$isBusRequiredOrNullable, 'string', 'max:191'],

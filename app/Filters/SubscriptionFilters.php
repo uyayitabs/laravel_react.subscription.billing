@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class SubscriptionFilters implements Filter
 {
-    public function __invoke(Builder $query, $value, string $property) : Builder
+    public function __invoke(Builder $query, $value, string $property): Builder
     {
         $query->where(function ($query) use ($value) {
             $query->orWhere('id', 'LIKE', '%' . $value . '%');

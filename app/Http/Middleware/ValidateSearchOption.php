@@ -19,7 +19,6 @@ class ValidateSearchOption
     public function handle($request, Closure $next)
     {
         if (request()->has('filter') && isset(request()->filter['keyword']) && Str::contains(request()->filter['keyword'], ':')) {
-
             $pcs = explode(' ', request()->filter['keyword']);
             $keywords = [];
             foreach ($pcs as $i => $pc) {
@@ -34,7 +33,8 @@ class ValidateSearchOption
                 $searchCol = trim(Str::before($keyword, ':'));
                 $searchKeyword = trim(trim(Str::after($keyword, ':')), '"');
 
-                if (in_array($searchCol, [
+                if (
+                    in_array($searchCol, [
                     'date',
                     'due_date',
                     'subscription_start',
@@ -48,11 +48,11 @@ class ValidateSearchOption
                     'stop',
                     'start',
                     'invoice_date'
-                ])) {
+                    ])
+                ) {
                     try {
                         Carbon::parse($searchKeyword);
                     } catch (\Exception $e) {
-
                         Logging(
                             "Search",
                             [
@@ -187,7 +187,9 @@ class ValidateSearchOption
                 ]
             ]
         ];
-        if (!isset($controllers[$controller]) || !in_array($action, $controllers[$controller]['action'])) return false;
+        if (!isset($controllers[$controller]) || !in_array($action, $controllers[$controller]['action'])) {
+            return false;
+        }
         if (isset($controllers[$controller])) {
             if ($action != 'my' && $action != 'index') {
                 $model = Str::ucfirst(Str::singular($action));

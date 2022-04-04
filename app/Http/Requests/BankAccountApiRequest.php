@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+
 class BankAccountApiRequest extends BaseApiRequest
 {
     protected $relation;

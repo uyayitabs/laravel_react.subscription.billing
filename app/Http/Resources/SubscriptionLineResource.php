@@ -62,8 +62,12 @@ class SubscriptionLineResource extends JsonResource
         $status = [];
         if ($Line_status) {
             $type = 'danger';
-            if (0 == $Line_status->id) $type = 'info';
-            if (1 == $Line_status->id) $type = 'success';
+            if (0 == $Line_status->id) {
+                $type = 'info';
+            }
+            if (1 == $Line_status->id) {
+                $type = 'success';
+            }
             $status = [
                 'id' => $Line_status->id,
                 'label' => $Line_status->label,

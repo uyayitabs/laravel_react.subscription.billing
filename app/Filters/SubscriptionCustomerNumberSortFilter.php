@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-use \Spatie\QueryBuilder\Sorts\Sort;
+use Spatie\QueryBuilder\Sorts\Sort;
 use Illuminate\Database\Eloquent\Builder;
 
 class SubscriptionCustomerNumberSortFilter implements Sort
